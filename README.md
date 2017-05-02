@@ -1,6 +1,11 @@
 CROBOTS
 =======
 
+I have now got a seperate repository for robots, [here](https://github.com/smeagolthellama/crobots-robots)
+
+###Previous Readme
+
+
 This is the source code of a fork of the original CROBOTS game that Tom Poindexter wrote in 1985, now
 released under GPLv2.
 

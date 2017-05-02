@@ -27,7 +27,9 @@
 #include <string.h>
 #include <termio.h>
 #endif
-
+#ifdef UNIX
+#include <unistd.h>
+#endif
 
 #define LATENCY 700000
 char buffer[2];
@@ -81,7 +83,11 @@ void ap_main()
 		for (n=0;n<MAXROBOTS;n++) robots[n].status=DEAD;
 	if(ndebug) UPDATE_CYCLES=1;
 	else UPDATE_CYCLES=46-ritardo*5;
+#ifdef UNIX
+        usleep(100*ritardo);
+#else
 	for (n=1;n<(ritardo*LATENCY);++n);
+#endif
 #ifdef UNIX
 	ioctl(0,TCSETA,&t_old);     /* rimetto a posto il terminale                */
 #endif
