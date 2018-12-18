@@ -192,7 +192,7 @@ char *argv[];
     else play(files,num_robots);
 
   /* all done */
-  } 
+  }
   exit(0);
 
 }
@@ -232,7 +232,7 @@ int n;
 	  strcpy(outfile,f[i]);
 	  strcat(outfile,"o");
 	  f_out=fopen(outfile,"wb");
-	  fwrite(&(robots[i].code),sizeof(long),1,f_out); /*questo è un valore di offset*/
+	  fwrite(&(robots[i].code),sizeof(long),1,f_out); /*questo Ã¨ un valore di offset*/
 	  fwrite(&(robots[i].ext_count),sizeof(int),1,f_out);
 	  fwrite(robots[i].funcs,ILEN,MAXSYM,f_out);
 	  fwrite(robots[i].code, sizeof(struct instr),CODESPACE,f_out);
@@ -274,7 +274,7 @@ int n;
   r_debug = 0;  /* turns off full compile info */
 
   for (i = 0; i < n; i++) {
- 
+
     /* compile the robot */
     r_flag = 0;
     cur_robot = &robots[num_robots];
@@ -590,7 +590,7 @@ char *f;
   cur_robot = &robots[0];
   loadrobot(f);
 
-  
+
   /* check r_flag for compile errors */
   if (r_flag) {
     fprintf(stderr," %s could not compile\n",f);
@@ -700,29 +700,26 @@ void rand_pos(n)
 
 int n;
 {
-  int i, k;
+  int i, k, s, r;
   int quad[4];
 
   for (i = 0; i < 4; i++) {
     quad[i] = 0;
   }
-
-
+  s = rand() % n;
   /* get a new quadrant */
   for (i = 0; i < n; i++) {
-    k = rand() % 4;
-    if (quad[k] == 0)
+      if (i == 3) {
+          k = 0;
+          while (quad[k] != 0) k++;
+      } else do {
+          k = rand() % 4;
+      } while (quad[k] != 0);
       quad[k] = 1;
-    else {
-      while (quad[k] != 0) {
-	if (++k == 4)
-	  k = 0;
-      }
-      quad[k] = 1;
-    }
-    robots[i].org_x = robots[i].x =
+      r = (i + s) % n;
+    robots[r].org_x = robots[r].x =
        (rand() % (MAX_X * CLICK / 2)) + ((MAX_X * CLICK / 2) * (k%2));
-    robots[i].org_y = robots[i].y =
+    robots[r].org_y = robots[r].y =
        (rand() % (MAX_Y * CLICK / 2)) + ((MAX_Y * CLICK / 2) * (k<2));
   }
 }
