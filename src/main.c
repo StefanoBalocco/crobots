@@ -42,7 +42,7 @@ extern unsigned _stklen = 8000U;
 FILE *f_in;
 FILE *f_out;
 
-char *version   = "CROBOTS - version 1.1, PatchLevel3.1\n";
+char *version   = "CROBOTS - version 1.1, PatchLevel3.4\n";
 char *copyright = "Copyright 1985-2007 by Tom Poindexter, All rights reserved.\n";
 int garbage=0;
 

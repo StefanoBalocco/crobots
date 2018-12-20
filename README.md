@@ -4,7 +4,7 @@ CROBOTS
 This is the source code of a fork of the original CROBOTS game that Tom Poindexter wrote in 1985, now
 released under GPLv2.
 
-This is the v.1.1 patchlevel3.1
+This is the v.1.1 patchlevel3.4
 
 It includes the "zero-bug" fix, the 2000 instructions limit enhancement and an improved debugger.
 
